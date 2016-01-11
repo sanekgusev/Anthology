@@ -1,0 +1,20 @@
+{
+  "name": "SwiftCollections",
+  "version": "0.1.0",
+  "summary": "A short description of SwiftCollections.",
+  "description": "Test",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/SwiftCollections",
+  "license": "MIT",
+  "authors": {
+    "Alexander Gusev": "sanekgusev@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/SwiftCollections.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*"
+}
