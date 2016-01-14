@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  subspec "OrderedDictionary" do |sp|
+  s.subspec "OrderedDictionary" do |sp|
     sp.source_files = "Pod/Classes/OrderedDictionary.swift"
   end
 end
