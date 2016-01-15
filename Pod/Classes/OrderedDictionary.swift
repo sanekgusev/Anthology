@@ -101,3 +101,13 @@ extension OrderedDictionary : DictionaryLiteralConvertible {
         self.init(elements)
     }
 }
+
+extension OrderedDictionary : CustomStringConvertible, CustomDebugStringConvertible {
+    public var description : String {
+        return array.description
+    }
+    
+    public var debugDescription : String {
+        return "array: \(String(reflecting: array))\ndictionary: \(String(reflecting:dictionary))"
+    }
+}
