@@ -1,12 +1,12 @@
 
-public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollectionType, MutableIndexable {
+public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollectionType {
     
     public typealias KeyValuePair = (key: Key, value: Value)
     public typealias IndexValuePair = (index: Index, value: Value)
+    public typealias IndexKeyValuePair = (index: Index, key: Key, value: Value)
     
     public typealias Element = KeyValuePair
     public typealias Index = Int
-    public typealias SubSequence = ArraySlice<Element>
 
     private var array = [Element]()
     private var dictionary = [Key: Index]()
@@ -14,7 +14,7 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     public init() {}
     
     public init<S : SequenceType where S.Generator.Element == Element>(_ s: S) {
-        replaceRange(Range(start: 0, end: 0), with: s)
+        replaceRange(0..<0, with: s)
     }
     
     public var startIndex : Index {
@@ -26,16 +26,7 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     }
     
     public subscript (index: Index) -> Element {
-        get {
-            return array[index]
-        }
-        set {
-            replaceRange(Range(start:index, end:index), with: CollectionOfOne(newValue));
-        }
-    }
-    
-    public subscript (subRange: Range<Index>) -> SubSequence {
-        return array[subRange]
+        return array[index]
     }
 
     public subscript (key: Key) -> IndexValuePair? {
@@ -57,11 +48,12 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
         })
     }
     
-    public mutating func removeForKey(key: Key) -> IndexValuePair? {
+    public mutating func removeForKey(key: Key) -> IndexKeyValuePair? {
         guard let index = dictionary[key] else {
             return nil
         }
-        return (index, removeAtIndex(index).value)
+        let (key, value) = removeAtIndex(index)
+        return (index, key, value)
     }
     
     public mutating func updateValue(value: Value, forKey key: Key) -> Value? {
@@ -77,11 +69,12 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     public mutating func replaceRange<S : SequenceType where S.Generator.Element == Element>(subRange: Range<Index>, with newElements: S) {
         subRange.forEach { index in
             dictionary.removeValueForKey(array[index].key)
-            array.removeAtIndex(index)
         }
+        array.removeRange(subRange)
+        
         var index = subRange.startIndex;
         newElements.forEach { element in
-            if (dictionary[element.key] == nil) {
+            if dictionary[element.key] == nil {
                 dictionary[element.key] = index;
                 array.insert(element, atIndex: index)
                 index += 1;
