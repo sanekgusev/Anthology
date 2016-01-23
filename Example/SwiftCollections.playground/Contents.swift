@@ -2,13 +2,15 @@
 
 import SwiftCollections
 
-var str = "Hello, playground"
+var b: OrderedDictionary = [1:"one", 2:"two", 3:"three"]
 
-let tupleArray = Array(arrayLiteral: (1, "one"), (2, "two"))
-
-var b: OrderedSet = [1,2,3,4]
-
-//b.append(1)
-//b.appendContentsOf([1,2,3,4])
-
-b.replaceRange(0..<0, with: [4,5,6])
+b.append((1, "two"))
+b.appendContentsOf([(3, "three"), (4, "four")])
+b.removeForKey(3)
+b.updateValue("three", forKey: 3)
+b.insert((3, "three"), atIndex: 0)
+b.updateValue("zero", forKey: 3)
+b.replaceRange(3...3, with: EmptyCollection<(Int, String)>())
+b.replaceRange(0..<0, with: CollectionOfOne((0, "zero")))
+b.insert((3, "three"), atIndex: 3)
+String(b)

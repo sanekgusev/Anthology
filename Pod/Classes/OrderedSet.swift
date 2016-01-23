@@ -112,7 +112,12 @@ extension OrderedSet : SetAlgebraType {
 
 extension OrderedSet : CustomStringConvertible, CustomDebugStringConvertible {
     public var description : String {
-        return orderedDictionary.description
+        var description = dropLast().reduce("{", combine: { $0 + "\($1), " })
+        if let last = last {
+            description += "\(last)"
+        }
+        description += "}"
+        return description
     }
     
     public var debugDescription : String {

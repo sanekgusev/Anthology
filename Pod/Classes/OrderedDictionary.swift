@@ -30,10 +30,12 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     }
 
     public subscript (key: Key) -> IndexValuePair? {
-        guard let index = dictionary[key] else {
-            return nil
+        get {
+            guard let index = dictionary[key] else {
+                return nil
+            }
+            return (index, array[index].value)
         }
-        return (index, array[index].value)
     }
     
     public var keys: LazyMapCollection<OrderedDictionary, Key> {
@@ -58,6 +60,7 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     
     public mutating func updateValue(value: Value, forKey key: Key) -> Value? {
         guard let index = dictionary[key] else {
+            append((key, value))
             return nil
         }
         let oldValue = array[index].value
@@ -97,7 +100,12 @@ extension OrderedDictionary : DictionaryLiteralConvertible {
 
 extension OrderedDictionary : CustomStringConvertible, CustomDebugStringConvertible {
     public var description : String {
-        return array.description
+        var description = dropLast().reduce("[", combine: { $0 + "\($1.key): \($1.value), " })
+        if let last = last {
+            description += "\(last.key): \(last.value)"
+        }
+        description += "]"
+        return description
     }
     
     public var debugDescription : String {
