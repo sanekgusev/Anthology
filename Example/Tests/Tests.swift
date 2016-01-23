@@ -2,7 +2,7 @@
 
 import Quick
 import Nimble
-import SwiftCollections
+import Anthology
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {

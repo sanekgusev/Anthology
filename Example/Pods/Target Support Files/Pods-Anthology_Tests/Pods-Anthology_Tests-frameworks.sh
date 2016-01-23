@@ -84,12 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-SwiftCollections_Tests/Nimble.framework"
-  install_framework "Pods-SwiftCollections_Tests/Quick.framework"
-  install_framework "Pods-SwiftCollections_Tests/SwiftCollections.framework"
+  install_framework "Pods-Anthology_Tests/Anthology.framework"
+  install_framework "Pods-Anthology_Tests/Nimble.framework"
+  install_framework "Pods-Anthology_Tests/Quick.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-SwiftCollections_Tests/Nimble.framework"
-  install_framework "Pods-SwiftCollections_Tests/Quick.framework"
-  install_framework "Pods-SwiftCollections_Tests/SwiftCollections.framework"
+  install_framework "Pods-Anthology_Tests/Anthology.framework"
+  install_framework "Pods-Anthology_Tests/Nimble.framework"
+  install_framework "Pods-Anthology_Tests/Quick.framework"
 fi

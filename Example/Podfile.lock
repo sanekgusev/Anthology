@@ -1,26 +1,27 @@
 PODS:
+  - Anthology (1.0.0):
+    - Anthology/OrderedDictionary (= 1.0.0)
+    - Anthology/OrderedSet (= 1.0.0)
+  - Anthology/OrderedDictionary (1.0.0)
+  - Anthology/OrderedSet (1.0.0):
+    - Anthology/OrderedDictionary
   - Nimble (3.0.0)
   - Quick (0.8.0)
-  - SwiftCollections (0.1.0):
-    - SwiftCollections/OrderedDictionary (= 0.1.0)
-    - SwiftCollections/OrderedSet (= 0.1.0)
-  - SwiftCollections/OrderedDictionary (0.1.0)
-  - SwiftCollections/OrderedSet (0.1.0)
 
 DEPENDENCIES:
+  - Anthology (from `../`)
   - Nimble (= 3.0.0)
   - Quick (~> 0.8.0)
-  - SwiftCollections (from `../`)
 
 EXTERNAL SOURCES:
-  SwiftCollections:
+  Anthology:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Anthology: 546da70d48c2d9bcc03ee11afebfb03b22ce9784
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
-  SwiftCollections: 8563475c183792522d979d66e337d5764242a017
 
-PODFILE CHECKSUM: b605961e50c44bce4406d291a0fa4ef1ce25412e
+PODFILE CHECKSUM: 46d5ef7e9597f1d87118a25fc23cf2dadc011775
 
 COCOAPODS: 1.0.0.beta.2

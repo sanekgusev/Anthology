@@ -1,6 +1,6 @@
 //: Playground - noun: a place where people can play
 
-import SwiftCollections
+import Anthology
 
 var b: OrderedDictionary = [1:"one", 2:"two", 3:"three"]
 

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CE2E774E6BD01AD89C7D4164'
-               BlueprintName = 'SwiftCollections'
+               BlueprintIdentifier = 'F8DA5C7C873E87CC6A897A79'
+               BlueprintName = 'Anthology'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftCollections.framework'>
+               BuildableName = 'Anthology.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
