@@ -10,14 +10,17 @@ before_install:
 - rvm info
 - gem env
 - echo $GEM_HOME
+- echo $PATH
 - rvm --default use 2.2
 - rvm 2.2
 - rvm info
 - gem env
 - echo $GEM_HOME
+- echo $PATH
 - gem install cocoapods --prerelease --verbose
 - which pod
 - pod --version
+- /Users/travis/.rvm/gems/ruby-2.2.1/bin/pod --version
 - gem install xcpretty
 - pod install --project-directory=Example
 script:
