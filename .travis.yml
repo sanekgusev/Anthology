@@ -15,7 +15,7 @@ before_install:
 - rvm info
 - gem env
 - echo $GEM_HOME
-- gem install cocoapods --pre
+- gem install cocoapods --prerelease --verbose
 - which pod
 - pod --version
 - gem install xcpretty
