@@ -2,17 +2,17 @@
 
 import Anthology
 
-var b: OrderedDictionary = [1:"one", 2:"two", 3:"three"]
+var dict: OrderedDictionary = [1:"one", 2:"two", 3:"three"]
 
-b.append((1, "two"))
-b.appendContentsOf([(3, "three"), (4, "four")])
-b.removeForKey(3)
-b.updateValue("three", forKey: 3)
-b.insert((3, "three"), atIndex: 0)
-b.updateValue("zero", forKey: 3)
-b.replaceRange(3...3, with: EmptyCollection<(Int, String)>())
-b.replaceRange(0..<0, with: CollectionOfOne((0, "zero")))
-b.insert((3, "three"), atIndex: 3)
-String(b)
+dict.append((1, "two"))
+dict.appendContentsOf([(3, "three"), (4, "four")])
+dict.removeForKey(3)
+dict.updateValue("three", forKey: 3)
+dict.insert((3, "three"), atIndex: 0)
+dict.updateValue("zero", forKey: 3)
+dict.replaceRange(3...3, with: EmptyCollection<(Int, String)>())
+dict.replaceRange(0..<0, with: CollectionOfOne((0, "zero")))
+dict.insert((3, "three"), atIndex: 3)
+String(dict)
 
-var c: OrderedSet = ["one", "two", "three"]
+var set: OrderedSet = ["one", "two", "three"]
