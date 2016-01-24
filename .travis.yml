@@ -17,7 +17,11 @@ before_install:
 - gem env
 - echo $GEM_HOME
 - echo $PATH
+- gem list cocoapods
+- gem uninstall cocoapods 0.39.0
+- gem list cocoapods
 - gem install cocoapods --prerelease --verbose
+- gem list cocoapods
 - which pod
 - pod --version
 - /Users/travis/.rvm/gems/ruby-2.2.1/bin/pod --version
