@@ -1,6 +1,6 @@
 # Anthology
 
-[![CI Status](http://img.shields.io/travis/Alexander Gusev/Anthology.svg?style=flat)](https://travis-ci.org/Alexander Gusev/Anthology)
+[![CI Status](http://img.shields.io/travis/sanekgusev/Anthology.svg?style=flat)](https://travis-ci.org/Alexander Gusev/Anthology)
 [![Version](https://img.shields.io/cocoapods/v/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
 [![License](https://img.shields.io/cocoapods/l/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
 [![Platform](https://img.shields.io/cocoapods/p/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
