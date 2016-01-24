@@ -1,4 +1,4 @@
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 
 #import "Nimble.h"
 #import "DSL.h"

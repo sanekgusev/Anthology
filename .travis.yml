@@ -8,10 +8,10 @@ cache: cocoapods
 podfile: Example/Podfile
 before_install:
 - rvm install 2.3.0
-- rvm --default use 2.3.0
 - rvm use 2.3.0
-- gem install cocoapods --pre # Since Travis is not always on latest version
+- gem install cocoapods --pre
+- gem install xcpretty
 - pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -workspace Example/Anthology.xcworkspace -scheme Anthology -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild build -workspace Example/Anthology.xcworkspace -scheme Anthology -sdk macosx10.11 ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint

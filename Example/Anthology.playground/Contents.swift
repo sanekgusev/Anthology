@@ -14,3 +14,5 @@ b.replaceRange(3...3, with: EmptyCollection<(Int, String)>())
 b.replaceRange(0..<0, with: CollectionOfOne((0, "zero")))
 b.insert((3, "three"), atIndex: 3)
 String(b)
+
+var c: OrderedSet = ["one", "two", "three"]
