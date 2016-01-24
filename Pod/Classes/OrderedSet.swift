@@ -143,7 +143,8 @@ extension OrderedSet : SetAlgebraType {
     /// either `self` or `other`, but not both.
     ///
     /// - Equivalent to replacing `self` with `self.exclusiveOr(other)`
-    public mutating func exclusiveOrInPlace(var other: OrderedSet) {
+    public mutating func exclusiveOrInPlace(other: OrderedSet) {
+        var other = other
         let elementsToRemove = orderedDictionary
             .map { $0.key }
             .filter { other.contains($0) }
