@@ -1,8 +1,6 @@
 # Anthology
 
-[![Swift](https://img.shields.io/badge/swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
-[![Platforms](https://img.shields.io/badge/platform-osx%20%7C%20ios%20%7C%20watchos%20%7C%20tvos-lightgrey.svg)](https://developer.apple.com/swift/)
-[![License](https://img.shields.io/badge/license-MIT-71787A.svg)](https://tldrlegal.com/license/mit-license)  
+[![Swift](https://img.shields.io/badge/swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)  
 [![Version](https://img.shields.io/cocoapods/v/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
 [![License](https://img.shields.io/cocoapods/l/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
 [![Platform](https://img.shields.io/cocoapods/p/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)  
