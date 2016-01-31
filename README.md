@@ -1,9 +1,9 @@
 # Anthology
 
-[![Swift](https://img.shields.io/badge/swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)  
+[![Swift](https://img.shields.io/badge/swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Version](https://img.shields.io/cocoapods/v/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
 [![License](https://img.shields.io/cocoapods/l/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
-[![Platform](https://img.shields.io/cocoapods/p/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)  
+[![Platform](https://img.shields.io/cocoapods/p/Anthology.svg?style=flat)](http://cocoapods.org/pods/Anthology)
 [![CI Status](http://img.shields.io/travis/sanekgusev/Anthology.svg?style=flat)](https://travis-ci.org/sanekgusev/Anthology)
 
 ### Anthology — A collection of useful Swift collections
