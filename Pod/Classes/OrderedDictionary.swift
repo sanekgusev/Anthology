@@ -1,6 +1,6 @@
 
 /// A collection of key-value pairs with defined ordering.
-public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollectionType {
+public struct OrderedDictionary<Key: Hashable, Value>: RangeReplaceableCollectionType {
     
     public typealias KeyValuePair = (key: Key, value: Value)
     public typealias IndexValuePair = (index: Index, value: Value)
@@ -17,19 +17,19 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     
     /// Construct an ordered dictionary from the elements of arbitrary sequence 
     /// of key-value pairs.
-    public init<S : SequenceType where S.Generator.Element == Element>(_ s: S) {
+    public init<S: SequenceType where S.Generator.Element == Element>(_ s: S) {
         replaceRange(0..<0, with: s)
     }
     
     /// Always zero, which is the index of the first key-value pair
     /// when non-empty.
-    public var startIndex : Index {
+    public var startIndex: Index {
         return array.startIndex
     }
     
     /// A "past-the-end" element index; the successor of the last valid
     /// subscript argument.
-    public var endIndex : Index {
+    public var endIndex: Index {
         return array.endIndex
     }
     
@@ -52,16 +52,12 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     
     /// An ordered collection containing just the keys of `self`.
     public var keys: LazyMapCollection<OrderedDictionary, Key> {
-        return LazyMapCollection(self, transform: { element in
-            return element.key
-        })
+        return self.lazy.map({ $0.key })
     }
     
     /// An ordered collection containing just the values of `self`.
     public var values: LazyMapCollection<OrderedDictionary, Value> {
-        return LazyMapCollection(self, transform: { element in
-            return element.value
-        })
+        return self.lazy.map({ $0.value })
     }
     
     /// Remove a given key and the associated value from the dictionary,
@@ -95,7 +91,7 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     }
 
     /// Replace the given `subRange` of elements with `newElements`.
-    public mutating func replaceRange<S : SequenceType where S.Generator.Element == Element>(subRange: Range<Index>, with newElements: S) {
+    public mutating func replaceRange<S: SequenceType where S.Generator.Element == Element>(subRange: Range<Index>, with newElements: S) {
         subRange.forEach { index in
             dictionary.removeValueForKey(array[index].key)
         }
@@ -112,23 +108,23 @@ public struct OrderedDictionary<Key : Hashable, Value> : RangeReplaceableCollect
     }
 }
 
-extension OrderedDictionary : ArrayLiteralConvertible {
+extension OrderedDictionary: ArrayLiteralConvertible {
     /// Create an instance containing `elements`.
     public init(arrayLiteral elements: Element...) {
         self.init(elements)
     }
 }
 
-extension OrderedDictionary : DictionaryLiteralConvertible {
+extension OrderedDictionary: DictionaryLiteralConvertible {
     /// Create an instance containing `elements`.
     public init(dictionaryLiteral elements: (Key, Value)...) {
         self.init(elements)
     }
 }
 
-extension OrderedDictionary : CustomStringConvertible, CustomDebugStringConvertible {
+extension OrderedDictionary: CustomStringConvertible, CustomDebugStringConvertible {
     /// A textual representation of `self`.
-    public var description : String {
+    public var description: String {
         var description = dropLast().reduce("[", combine: { $0 + "\($1.key): \($1.value), " })
         if let last = last {
             description += "\(last.key): \(last.value)"
@@ -138,7 +134,7 @@ extension OrderedDictionary : CustomStringConvertible, CustomDebugStringConverti
     }
     
     /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription : String {
+    public var debugDescription: String {
         return "array: \(String(reflecting: array))\ndictionary: \(String(reflecting:dictionary))"
     }
 }

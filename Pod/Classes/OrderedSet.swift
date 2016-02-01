@@ -1,6 +1,6 @@
 
 /// A collection of unique `Element` instances with defined ordering.
-public struct OrderedSet<Element : Hashable> : RangeReplaceableCollectionType {
+public struct OrderedSet<Element: Hashable>: RangeReplaceableCollectionType {
     
     public typealias Index = Int
     
@@ -42,7 +42,7 @@ public struct OrderedSet<Element : Hashable> : RangeReplaceableCollectionType {
     
     /// Replace the given `subRange` of elements with `newElements`.
     public mutating func replaceRange<S : SequenceType where S.Generator.Element == Element>(subRange: Range<Index>, with newElements: S) {
-        orderedDictionary.replaceRange(subRange, with: newElements.map { ($0, ()) } )
+        orderedDictionary.replaceRange(subRange, with: newElements.map({ ($0, ()) }))
     }
 }
 
@@ -65,14 +65,14 @@ public func ==<T: Hashable>(lhs: OrderedSet<T>, rhs: OrderedSet<T>) -> Bool {
     return lhs.elementsEqual(rhs)
 }
 
-extension OrderedSet : ArrayLiteralConvertible {
+extension OrderedSet: ArrayLiteralConvertible {
     /// Create an instance containing `elements`.
     public init(arrayLiteral elements: Element...) {
         self.init(elements)
     }
 }
 
-extension OrderedSet : SetAlgebraType {
+extension OrderedSet: SetAlgebraType {
     /// Returns the set of elements contained in `self`, in `other`, or in
     /// both `self` and `other`.
     @warn_unused_result
@@ -121,7 +121,7 @@ extension OrderedSet : SetAlgebraType {
     /// - Equivalent to replacing `self` with `self.union(other)`.
     /// - Postcondition: `self.isSupersetOf(other)`
     public mutating func unionInPlace(other: OrderedSet) {
-        other.forEach({ orderedDictionary.append(($0, ())) })
+        other.forEach { orderedDictionary.append(($0, ()))}
     }
     
     /// Removes all elements of `self` that are not also present in
@@ -131,10 +131,12 @@ extension OrderedSet : SetAlgebraType {
     /// - Postcondition: `self.isSubsetOf(other)`
     public mutating func intersectInPlace(other: OrderedSet) {
         var elementsToRemove = orderedDictionary
-            .map { $0.key }
-            .filter { !other.contains($0) }
+            .map({ $0.key })
+            .filter({ !other.contains($0) })
         elementsToRemove.appendContentsOf(
-            other.filter { element in !orderedDictionary.contains { $0.key == element } }
+            other.filter({ element in
+                !orderedDictionary.contains({ $0.key == element })
+            })
         )
         elementsToRemove.forEach { remove($0) }
     }
@@ -146,16 +148,16 @@ extension OrderedSet : SetAlgebraType {
     public mutating func exclusiveOrInPlace(other: OrderedSet) {
         var other = other
         let elementsToRemove = orderedDictionary
-            .map { $0.key }
-            .filter { other.contains($0) }
+            .map({ $0.key })
+            .filter({ other.contains($0) })
         elementsToRemove.forEach { remove($0); other.remove($0) }
         unionInPlace(other)
     }
 }
 
-extension OrderedSet : CustomStringConvertible, CustomDebugStringConvertible {
+extension OrderedSet: CustomStringConvertible, CustomDebugStringConvertible {
     /// A textual representation of `self`.
-    public var description : String {
+    public var description: String {
         var description = dropLast().reduce("{", combine: { $0 + "\($1), " })
         if let last = last {
             description += "\(last)"
@@ -165,7 +167,7 @@ extension OrderedSet : CustomStringConvertible, CustomDebugStringConvertible {
     }
     
     /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription : String {
+    public var debugDescription: String {
         return "orderedDictionary: \(String(reflecting: orderedDictionary))"
     }
 }
