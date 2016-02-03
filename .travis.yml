@@ -7,12 +7,10 @@ osx_image: xcode7.3
 cache: cocoapods
 notifications:
   email: false
-podfile: Example/Podfile
 before_install:
 - rvm --default use 2.2
 install:
 - bundle install
-- bundle exec pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild build -workspace Example/Anthology.xcworkspace -scheme Anthology -sdk macosx10.11 ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild build -workspace Anthology.xcworkspace -scheme Anthology ONLY_ACTIVE_ARCH=NO | xcpretty
 - bundle exec pod lib lint
