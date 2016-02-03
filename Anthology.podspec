@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Anthology"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Exotic Swift collections"
   s.cocoapods_version = '>= 1.0.0.beta2'
 
@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
 
   s.subspec "OrderedDictionary" do |od|
-    od.source_files = "Pod/Classes/OrderedDictionary.swift"
+    od.source_files = "Sources/Anthology/OrderedDictionary.swift"
   end
   s.subspec "OrderedSet" do |os|
-    os.source_files = "Pod/Classes/OrderedSet.swift"
+    os.source_files = "Sources/Anthology/OrderedSet.swift"
     os.dependency "Anthology/OrderedDictionary"
   end
 end
